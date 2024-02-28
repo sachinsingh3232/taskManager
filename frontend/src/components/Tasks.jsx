@@ -12,7 +12,7 @@ const Tasks = () => {
   const [fetchData, { loading }] = useFetch();
 
   const fetchTasks = useCallback(() => {
-    const config = { url: `${process.env._REACT_APP_BASE_URL}/tasks`, method: "get", headers: { Authorization: authState.token } };
+    const config = { url: `${process.env.REACT_APP_BASE_URL}/api/tasks`, method: "get", headers: { Authorization: authState.token } };
     fetchData(config, { showSuccessToast: false }).then(data => setTasks(data.tasks));
   }, [authState.token, fetchData]);
 
@@ -23,7 +23,7 @@ const Tasks = () => {
 
 
   const handleDelete = (id) => {
-    const config = { url: `${process.env._REACT_APP_BASE_URL}/tasks/${id}`, method: "delete", headers: { Authorization: authState.token } };
+    const config = { url: `${process.env.REACT_APP_BASE_URL}/api/tasks/${id}`, method: "delete", headers: { Authorization: authState.token } };
     fetchData(config).then(() => fetchTasks());
   }
 

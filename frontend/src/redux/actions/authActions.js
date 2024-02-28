@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export const postLoginData = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
-    const { data } = await axios.post(`${process.env._REACT_APP_BASE_URL}/auth/login`, { email, password });
+    const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/auth/login`, { email, password });
     dispatch({
       type: LOGIN_SUCCESS,
       payload: data,
@@ -28,7 +28,7 @@ export const postLoginData = (email, password) => async (dispatch) => {
 
 export const saveProfile = (token) => async (dispatch) => {
   try {
-    const { data } = await axios.get(`${process.env._REACT_APP_BASE_URL}/profile`, {
+    const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/profile`, {
       headers: { Authorization: token }
     });
     dispatch({
