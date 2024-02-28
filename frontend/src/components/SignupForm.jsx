@@ -6,6 +6,7 @@ import Input from './utils/Input';
 import Loader from './utils/Loader';
 
 const SignupForm = () => {
+  console.log(process.env._REACT_APP_BASE_URL)
 
   const [formErrors, setFormErrors] = useState({});
   const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ const SignupForm = () => {
       return;
     }
 
-    const config = { url: "/auth/signup", method: "post", data: formData };
+    const config = { url: `${process.env._REACT_APP_BASE_URL}/api/auth/signup`, method: "post", data: formData };
     fetchData(config).then(() => {
       navigate("/login");
     });

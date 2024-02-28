@@ -29,7 +29,7 @@ const Task = () => {
 
   useEffect(() => {
     if (mode === "update") {
-      const config = { url: `/tasks/${taskId}`, method: "get", headers: { Authorization: authState.token } };
+      const config = { url: `${process.env._REACT_APP_BASE_URL}/tasks/${taskId}`, method: "get", headers: { Authorization: authState.token } };
       fetchData(config, { showSuccessToast: false }).then((data) => {
         setTask(data.task);
         setFormData({ description: data.task.description });

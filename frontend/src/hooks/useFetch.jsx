@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react"
 import { toast } from "react-toastify";
-import api from "../api";
+import axios from 'axios'
 
 const useFetch = () => {
 
@@ -16,7 +16,7 @@ const useFetch = () => {
     setState(state => ({ ...state, loading: true }));
 
     try {
-      const { data } = await api.request(config);
+      const { data } = await axios.request(config);
       setState({
         loading: false,
         data,
